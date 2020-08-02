@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Main page</title>
+
+<script>
+    function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+    (function() {
+    // your page initialization code here
+    // the DOM will be available here
+    document.getElementById('ifr').src = "https://www.twitch.tv/embed/"+getParameterByName("channel")+"/chat?parent=";
+    })();
+    
+</script>
+</head>
+<body>
+<iframe src="" id="ifr" name="ifr"></iframe>
+</body>
+</html>
